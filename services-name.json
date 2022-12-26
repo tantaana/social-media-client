@@ -1,0 +1,44 @@
+[
+    {
+        "title": "Root Canal",
+        "img": "https://mybowiedentist.com/wp-content/uploads/2021/05/root-canal-1024x768.jpg",
+        "rating": 4.5,
+        "price": "119.00",
+        "description": "Root canal treatment is needed when dental X-rays show that the pulp has been damaged by a bacterial infection.\n The pulp may become inflamed if it's infected by bacteria, allowing the bacteria to multiply and spread.The symptoms of a pulp infection include: pain when eating or drinking hot or cold, food and drink, pain when biting or chewing ,a loose tooth, As the infection progresses, these symptoms often disappear as the pulp dies."
+    },
+    {
+        "title": "Fillings",
+        "img": "https://hashtagdentist.com.au/wp-content/uploads/2019/08/portfolio-single_section_01_05-1024x609.jpg",
+        "rating": 4.3,
+        "price": "210.00",
+        "description": "Dental fillings are single or combinations of metals, plastics, glass or other materials used to repair or restore teeth. One of the most popular uses of fillings is to “fill” an area of tooth that your dentist has removed due to decay – “a cavity.” Fillings are also used to repair cracked or broken teeth and teeth that have been worn down from misuse (such as from nail-biting or tooth grinding)."
+    },
+    {
+        "title": "Extractions",
+        "img": "https://d7c2m8s2.stackpathcdn.com/wp-content/uploads/2017/02/tooth-extraction-at-Good-Samaritan-Dental-Implant-Institute.jpg",
+        "rating": 4.7,
+        "price": "85.00",
+        "description": "The cost for tooth extraction varies widely depending on whether the tooth is impacted.\n Simple extraction usually costs between $75 and $200 per tooth, and may be more depending on the type of anesthesia you need.\n The cost to remove impacted teeth is significantly higher and can land anywhere between $800 and $4,000. Where you live can also impact how much you pay for the procedure, as many services are tailored to an area’s cost of living."
+    },
+    {
+        "title": "Braces",
+        "img": "https://dentist-telaviv.com/wp-content/uploads/2021/04/29-1024x682.jpg",
+        "rating": 4.7,
+        "price": "1200.00",
+        "description": "Braces are dental tools that help correct problems with your teeth, like crowding, crooked teeth, or teeth that are out of alignment. Many people get braces when they’re teenagers, but adults get them too. As you wear them, braces slowly straighten and align your teeth so you have a normal bite. Some people get braces to adjust their smile. \n If you have crooked teeth and/or a misaligned bite (an underbite or overbite), there are a variety of treatments that can help straighten teeth, including braces and retainers, custom-made, removable or fixed tools that cover the outside of your teeth and help keep them in position. Learn more about how to tell if you have an overbite."
+    },
+    {
+        "title": "Denture",
+        "img": "https://www.benbrookfamilydental.com/wp-content/uploads/2021/11/dentures-3-1200x900.jpg",
+        "rating": 5,
+        "price": "1450.00",
+        "description": "A denture is a removable replacement for missing teeth and surrounding tissues. Two types of dentures are available -- complete and partial dentures. Complete dentures are used when all the teeth are missing, while partial dentures are used when some natural teeth remain. \n Complete dentures can be either conventional or immediate. Made after the teeth have been removed and the gum tissue has begun to heal, a conventional denture is ready for placement in the mouth about eight to 12 weeks after the teeth have been removed."
+    },
+    {
+        "title": "Teeth Whitening",
+        "img": "https://www.dentaid.com/uploads/images/main/77670847c03d708d2e3bd1f5da2646c2_main.jpg",
+        "rating": 4.2,
+        "price": "875.00",
+        "description": "Teeth whitening is one of the most popular cosmetic dentistry treatments offering a quick, non-invasive and affordable way to enhance a smile.  Universally valued by men and women alike, whitening (or bleaching) treatments are available to satisfy every budget, time frame and temperament. Whether in the form of professionally administered one-hour whitening sessions at a dental office or cosmetic spa, or home-use bleaching kits purchased at your local drugstore, solutions abound. \n Virtually everyone who opts for a teeth whitening solution sees moderate to substantial improvement in the brightness and whiteness of their smile. That said, it’s not a permanent solution to discoloration and requires maintenance or “touch-ups” for a prolonged effect. \n In this article we break down everything related to teeth whitening, including the process of tooth discoloration, what causes staining, the various treatment options available, and their associated risks and costs."
+    }
+]
