@@ -1,21 +1,20 @@
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import signUpImg from '../../assets/signup.png'
+import signUpImg from '../../assets/signup.gif'
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import { FaGoogle } from 'react-icons/fa'
 import { GoogleAuthProvider } from 'firebase/auth';
 import AllTitle from '../../Hooks/AllTitle';
+import { toast } from 'react-hot-toast';
 
 const SignUp = () => {
-
-    const [error, setError] = useState(null)
 
     const navigate = useNavigate();
     const location = useLocation();
 
     const from = location.state?.from?.pathname || '/';
 
-    const { user, createUser, providerLogin } = useContext(AuthContext);
+    const { user, createUser, updateUserProfile, providerLogin } = useContext(AuthContext);
 
     AllTitle('SignUp')
 
@@ -24,14 +23,22 @@ const SignUp = () => {
     const handleGoogle = () => {
         providerLogin(googleLogIn)
             .then(result => {
-                const users = result.user;
+                const user = result.user;
+                console.log(user)
+                if (user.uid) {
+                    toast.success('Successfully signed up')
+                }
                 navigate(from, { replace: true })
             })
             .catch(err => {
-                console.error(err);
-                setError("User could not sign in. Please try again.");
+                console.error(err.message);
+                if (err.message === "Firebase: Error (auth/popup-closed-by-user).") {
+                    toast.error('Could not sign in. Please try again')
+                }
             })
     }
+
+
 
     const handleSignUp = event => {
         event.preventDefault();
@@ -44,25 +51,46 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
+                form.reset()
+                handleUserInfo(name)
                 navigate(from, { replace: true })
+                window.location.reload();
+                toast.success('Successfully signed up')
             })
             .catch(err => {
-                console.error(err);
-                setError("User Already Exist !")
+                console.error(err.message);
+                if (err.message === "Firebase: Error (auth/email-already-in-use).") {
+                    toast.error('User Already Exists !')
+                }
+                if (err.message === "Firebase: Password should be at least 6 characters (auth/weak-password).") {
+                    toast.error('Password should be at least 6 characters')
+                }
             })
+
+
     }
+
+    const handleUserInfo = name => {
+        const profile = {
+            displayName: name
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(err => console.error(err))
+    }
+
 
     return (
         <div className='mt-20 flex justify-center'>
-            <div className="hero py-20 bg-base-200 mx-20">
+            <div className="hero py-20 bg-red-200 mx-20 rounded-2xl">
                 <div className="hero-content flex-col xl:flex-row gap-40">
                     <div className="lg:text-left">
                         <img src={signUpImg} alt="" />
                     </div>
-                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-purple-300">
 
                         <form onSubmit={handleSignUp} className="card-body">
-                            <h1 className="text-5xl font-bold text-center mb-10"><span className='text-yellow-500'>Sign Up</span></h1>
+                            <h1 className="text-4xl md:text-5xl font-bold text-center mb-10"><span className='text-black'>Sign Up</span></h1>
 
                             <div className="form-control">
                                 <label className="label">
@@ -84,15 +112,14 @@ const SignUp = () => {
                                 </label>
                                 <input type="password" name="password" placeholder="Type your password" className="input input-bordered" required />
                                 <div className="form-control mt-6">
-                                    <button className='btn btn-secondary' type="submit">Sign Up</button>
+                                    <button className='btn btn-primary' type="submit">Sign Up</button>
                                 </div>
                             </div>
-                            <h3 className='text-2xl text-center font-bold text-red-400 mt-4'>{error}</h3>
                         </form>
 
                         <h3 className='text-center text-2xl font-bold mb-6'>OR</h3>
-                        <button onClick={handleGoogle} className='btn btn-primary mb-6 mx-8 flex justify-evenly'><span className='text-2xl'><FaGoogle /></span><span>SignUp with Google</span></button>
-                        <h3 className='text-lg font-bold  mb-10 text-center'>Already have an account? <Link className='text-red-400 font-bold' to='/login'>Login</Link> here</h3>
+                        <button onClick={handleGoogle} className='btn btn-ghost mb-6 mx-8 flex justify-evenly'><span className='text-2xl'><FaGoogle /></span><span>SignUp with Google</span></button>
+                        <h3 className='text-lg font-bold  mb-10 text-center mx-4'>Already have an account? <Link className='text-red-500 font-bold' to='/login'>Login</Link> here</h3>
                     </div>
                 </div>
             </div>

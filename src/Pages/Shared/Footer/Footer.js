@@ -9,8 +9,10 @@ const Footer = () => {
                     <span className="footer-title">Services</span>
                     <Link to='/' className="link link-hover">Homepage</Link>
                     <Link to='/services' className="link link-hover">Services</Link>
+                    <Link to='/media' className="link link-hover">Media</Link>
+                    <Link to='/message' className="link link-hover">Message</Link>
                     <Link to='/blogs' className="link link-hover">Blogs</Link>
-                    <Link to='/myreviews' className="link link-hover">My Reviews</Link>
+
 
                 </div>
                 <div>
@@ -28,7 +30,7 @@ const Footer = () => {
             </footer>
             <footer className="footer px-10 py-4 border-t bg-base-200 text-base-content border-base-300">
                 <div className="items-center grid-flow-col">
-                    <p className='text-white text-xl font-bold'><span className='text-3xl'>⛑️</span>Doc<span className='text-red-500'>Mike</span>.com<br /><p className='text-sm'>Providing reliable dental service since 1992</p></p>
+                    <p className='text-black text-xl font-bold'><span className='text-3xl'></span>Socio<span className='text-purple-600'>ME</span><br /><p className='text-sm'>A website for instant chatting</p></p>
                 </div>
                 <div className="md:place-self-center md:justify-self-end">
                     <div className="grid grid-flow-col gap-4">

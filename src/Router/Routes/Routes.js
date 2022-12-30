@@ -13,6 +13,10 @@ import UserReview from '../../Pages/UserReview/UserReview';
 import UserReviewData from '../../Pages/UserReview/UserReviewData';
 import PrivateRoute from '../../PrivateRoute/PrivateRoute';
 import img1 from '../../assets/Error.png'
+import Media from '../../Pages/Media/Media';
+import Message from '../../Pages/Message/Message';
+import About from '../../Pages/About/About';
+import Details from '../../Pages/Details/Details';
 
 const router = createBrowserRouter([
     {
@@ -21,7 +25,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>
+                element: <PrivateRoute><Home></Home></PrivateRoute>
             },
             {
                 path: '/blogs',
@@ -64,6 +68,23 @@ const router = createBrowserRouter([
             {
                 path: '*',
                 element: <div className='flex justify-center mt-10'><img src={img1} alt="" /></div>
+            },
+            {
+                path: '/media',
+                element: <Media></Media>
+            },
+            {
+                path: '/message',
+                element: <Message></Message>
+            },
+            {
+                path: '/about',
+                element: <About></About>
+            },
+            {
+                path: `/details/:id`,
+                element: <PrivateRoute><Details></Details></PrivateRoute>,
+                loader: ({ params }) => fetch(`https://docmike-server-tantaana.vercel.app/details/${params.id}`)
             }
         ]
     }

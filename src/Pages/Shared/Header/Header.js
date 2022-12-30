@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 import { FaUserTie } from 'react-icons/fa'
+import userImg from '../../../assets/user.png'
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -13,8 +14,8 @@ const Header = () => {
 
     }
     return (
-        <div>
-            <div className="navbar bg-base-200">
+        <div className=''>
+            <div className="navbar bg-base-200 xl-flex flex-none justify-between">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost xl:hidden">
@@ -22,17 +23,19 @@ const Header = () => {
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             <li className='font-bold'><Link to='/'>Home</Link></li>
-                            <li className='font-bold'><Link to='/services'>Services</Link></li>
-                            <li className='font-bold'><Link to='/blogs'>Blogs</Link></li>
+                            <li className='font-bold'><Link to='/media'>Media</Link></li>
+                            <li className='font-bold'><Link to='/message'>Message</Link></li>
+                            <li className='font-bold'><Link to='/about'>About</Link></li>
 
                             {user?.uid ?
                                 <div>
-                                    <li><Link to='/myreviews' className='font-bold'>My Reviews</Link></li>
-                                    <li><Link to='/addservice' className='font-bold'>Add Service</Link></li>
-                                    <li className='font-bold' onClick={handleLogOut}><Link>Log Out</Link></li>
-                                    <div className='flex gap-8 items-center'>
-                                        <h5 className='font-bold text-red-400'>{user.displayName}</h5>
-                                        <img className="rounded-full" data-toggle="tooltip" data-placement="bottom" title={user?.displayName} style={{ height: '30px' }} src={user.photoURL} />
+                                    <li className='font-bold mb-4' onClick={handleLogOut}><Link>Log Out</Link></li>
+                                    <div className='flex items-center rounded p-1 bg-purple-400'>
+                                        <h5 className='font-bold text-black mr-4'>{user.displayName}</h5>
+                                        <>{user.photoURL ?
+                                            <img className="rounded-full" data-toggle="tooltip" data-placement="bottom" title={user?.displayName} style={{ height: '30px' }} src={user.photoURL} />
+                                            :
+                                            <img className="rounded-full" data-toggle="tooltip" data-placement="bottom" title={user?.displayName} style={{ height: '30px' }} src={userImg} />}</>
                                     </div>
                                 </div>
                                 :
@@ -46,30 +49,34 @@ const Header = () => {
 
                         </ul>
                     </div>
-                    <Link to='/' className="btn btn-ghost normal-case text-3xl font-bold"><span className='text-white'>⛑️Doc</span><span className='text-red-500 text-4xl'>Mike</span><span>.com</span></Link>
+                    <Link to='/' className="btn btn-ghost normal-case text-3xl font-bold"><span className='text-black'>Socio</span><span className='text-purple-600'>ME</span></Link>
                 </div>
-                <div className="navbar-center hidden xl:flex">
+                <div className="navbar-center hidden xl:flex border border-red">
                     <ul className="menu menu-horizontal p-0">
                         <li><Link className='font-bold text-xl' to='/'>Home</Link></li>
-                        <li><Link className='font-bold text-xl' to='/services'>Services</Link></li>
-                        <li><Link className='font-bold text-xl' to='/blogs'>Blogs</Link></li>
+                        <li><Link className='font-bold text-xl' to='/media'>Media</Link></li>
+                        <li><Link className='font-bold text-xl' to='/message'>Message</Link></li>
+                        <li><Link className='font-bold text-xl' to='/about'>About</Link></li>
 
-                        <li>{user?.uid ?
-                            <div>
-                                <li><Link to='/myreviews' className='font-bold text-xl'>My Reviews</Link></li>
-                                <li><Link to='/addservice' className='font-bold text-xl'>Add Service</Link></li>
+                        <div>{user?.uid ?
+                            <div className='flex'>
                                 <li onClick={handleLogOut}><Link className='font-bold text-xl'>Log Out</Link></li>
-                                <h5 className='text-xl text-red-400 font-bold'>{user.displayName}</h5>
-                                <img className='rounded-full' style={{ height: '40px' }} src={user.photoURL} />
+                                <div className='flex border bg-purple-400 items-center gap-4 p-2 rounded-2xl'>
+                                    <h5 className='text-xl text-black font-bold'>{user.displayName}</h5>
+                                    <>{user.photoURL ?
+                                        <img className='rounded-full' style={{ height: '40px' }} src={user.photoURL} />
+                                        :
+                                        <img className='rounded-full' style={{ height: '40px' }} src={userImg} />}</>
+                                </div>
                             </div>
                             :
                             <>
-                                <div className='d-flex'>
+                                <div className='flex'>
                                     <li><Link className='font-bold text-xl' to="/login">Login</Link></li>
                                     <li><Link className='font-bold text-xl' to='/signup'>Sign Up</Link></li>
                                     <li><h2><FaUserTie className='text-white text-2xl' /></h2></li>
                                 </div>
-                            </>}</li>
+                            </>}</div>
 
                     </ul>
                 </div>
